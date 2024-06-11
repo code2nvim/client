@@ -1,10 +1,10 @@
-import { NotesClient } from "./NotesClient/NotesClient";
+import NoteClient from "./NoteClient/NoteClient";
 import "./App.css";
 
 export const App = () => {
   return (
     <>
-      <NotesClient />
+      <NoteClient />
     </>
   );
 };
