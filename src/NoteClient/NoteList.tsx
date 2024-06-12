@@ -1,34 +1,16 @@
-import { useEffect, useState } from "react";
 import Note from "./Note";
 import NoteOptions from "./NoteOptions";
 
 type NoteListProps = {
-  url: string;
+  notes: Note[];
 };
 
-const NoteList = ({ url }: NoteListProps) => {
-  const [notes, setNotes] = useState<Note[]>([]);
-
-  useEffect(() => {
-    fetch(url)
-      .then((res) => res.json())
-      .then((data: Note[]) => setNotes(data.sort((a, b) => a.id - b.id)))
-      .catch((err) => console.error(err));
-  });
-
+const NoteList = ({ notes }: NoteListProps) => {
   return (
     <>
       {notes.map((note: Note) => (
-        <div key={note.id}>
-          {note.id}
-          {" ... "}
-          {note.processing ? "⭕️" : "❌"}
-          {" ... "}
-          {note.content}
-          <br />
+        <div className="note" key={note.id}>
           <NoteOptions note={note} />
-          <br />
-          <br />
         </div>
       ))}
     </>

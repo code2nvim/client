@@ -1,31 +1,22 @@
 import { useState } from "react";
+import { handleChangeNote, handleDeleteNote } from "./fetchData";
 import Note from "./Note";
 
-type NoteOptsProps = {
+type NoteOptionsProps = {
   note: Note;
 };
 
-const NoteOpts = ({ note }: NoteOptsProps) => {
+const NoteOptions = ({ note }: NoteOptionsProps) => {
   const [editing, setEditing] = useState(false);
 
-  const onChange = (note: Note) => {
-    // TODO
-    console.log("chang note " + note.id);
-  };
-
-  const onDelete = (id: number) => {
-    // TODO
-    console.log("delete note: " + id);
-  };
-
-  const noteEdit = (editing: boolean) => {
+  const contentEdit = (editing: boolean) => {
     if (editing) {
       return (
         <>
           <input
             value={note.content}
             onChange={(input) => {
-              onChange({
+              handleChangeNote({
                 ...note,
                 content: input.target.value,
               });
@@ -50,16 +41,16 @@ const NoteOpts = ({ note }: NoteOptsProps) => {
         type="checkbox"
         checked={note.processing}
         onChange={(processing) => {
-          onChange({
+          handleChangeNote({
             ...note,
             processing: processing.target.checked,
           });
         }}
       />
-      {noteEdit(editing)}
-      <button onClick={() => onDelete(note.id)}>delete</button>
+      {contentEdit(editing)}
+      <button onClick={() => handleDeleteNote(note.id)}>delete</button>
     </label>
   );
 };
 
-export default NoteOpts;
+export default NoteOptions;
