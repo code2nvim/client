@@ -8,21 +8,29 @@ type NoteOptionsProps = {
 
 const NoteOptions = ({ note }: NoteOptionsProps) => {
   const [editing, setEditing] = useState(false);
+  const [content, setContent] = useState(note.content);
 
   const contentEdit = (editing: boolean) => {
     if (editing) {
       return (
         <>
           <input
-            value={note.content}
+            value={content}
             onChange={(input) => {
-              handleChangeNote({
-                ...note,
-                content: input.target.value,
-              });
+              setContent(input.target.value);
             }}
           />
-          <button onClick={() => setEditing(false)}>save</button>
+          <button
+            onClick={() => {
+              setEditing(false);
+              handleChangeNote({
+                ...note,
+                content,
+              });
+            }}
+          >
+            save
+          </button>
         </>
       );
     } else {
