@@ -47,11 +47,11 @@ const NoteOptions = ({ note }: NoteOptionsProps) => {
     <label>
       <input
         type="checkbox"
-        checked={note.processing}
-        onChange={(processing) => {
+        checked={note.doing}
+        onChange={(doing) => {
           handleChangeNote({
             ...note,
-            processing: processing.target.checked,
+            doing: doing.target.checked,
           });
         }}
       />

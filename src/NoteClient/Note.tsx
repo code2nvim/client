@@ -1,6 +1,6 @@
 type Note = {
   id: number;
-  processing: boolean;
+  doing: boolean;
   content: string;
 };
 
