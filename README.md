@@ -2,6 +2,8 @@
 
 I just want my own note-taking app.
 
+![client demo](./client-demo.gif)
+
 ## Create `.env` first!!!
 
 - Ignore this if you want all `fetch` not to work
@@ -13,7 +15,7 @@ VITE_API_URL=http://localhost/api
 
 ## Long live Prettier!!!
 
-I set those to ensure that my code has been formatted
+I've done those to ensure that my code is formatted
 
 - Install `eslint-plugin-prettier` and `eslint-config-prettier`
 
