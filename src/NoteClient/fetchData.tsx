@@ -24,7 +24,9 @@ export const handleChangeNote = (note: Note) => {
 };
 
 export const handleDeleteNote = (id: number) => {
-  fetch(url + "/" + id, {
-    method: "DELETE",
-  }).catch((err) => console.error(err));
+  const msg = "Delete this message?";
+  if (window.confirm(msg))
+    fetch(url + "/" + id, {
+      method: "DELETE",
+    }).catch((err) => console.error(err));
 };
