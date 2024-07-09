@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Client } from "./types/client";
+import { Client } from "./client/client";
 
 const Toggle = styled.button`
   font-size: 1.2rem;
@@ -27,7 +27,7 @@ export const SideBar = ({ select }: SideBarProps) => {
     <>
       <Toggle>MENU</Toggle>
       <Menu>
-        <ClientOpt onClick={() => select("TODO")}>Chat</ClientOpt>
+        <ClientOpt onClick={() => select("Chat")}>Chat</ClientOpt>
         <ClientOpt onClick={() => select("Notes")}>Notes</ClientOpt>
         <ClientOpt onClick={() => select("Links")}>Links</ClientOpt>
       </Menu>
