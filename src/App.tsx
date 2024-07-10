@@ -4,12 +4,24 @@ import { Client } from "./client/client";
 import SideBar from "./SideBar";
 import NoteClient from "./NoteClient/NoteClient";
 
+const Top = styled.header`
+  background: black;
+  width: 100%;
+  position: static;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 const Title = styled.h1`
-  font-size: 1.15rem;
+  color: white;
+  font-size: 2rem;
+  margin: 0;
 `;
 
 export const App = () => {
   const [client, setClient] = useState<Client>("Chat");
+  const [visible, setVisible] = useState(false);
 
   const select = (client: Client) => {
     setClient(client);
@@ -17,15 +29,17 @@ export const App = () => {
 
   return (
     <>
-      <header>
+      <Top>
+        <button onClick={() => setVisible(visible ? false : true)}>MENU</button>
         <Title>{client}</Title>
-      </header>
-      <SideBar select={select} />
-      <main>
+        <div />
+      </Top>
+      <>
         {client == "Chat" && "Chat"}
         {client == "Notes" && <NoteClient />}
-        {client == "Links" && "Links"}
-      </main>
+        {client == "Files" && "Files"}
+      </>
+      {visible && <SideBar select={select} />}
     </>
   );
 };

@@ -2,16 +2,24 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Note } from "./note/note";
 
-const UrlBtn = styled.button`
-  color: black;
+const Page = styled.main`
+  background: #333;
 `;
 
-const Url = styled.a`
+const Url = styled.p`
   color: white;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+`;
+
+const Show = styled.button`
+  color: black;
 `;
 
 const NoteClient = () => {
   const url = import.meta.env.VITE_API_URL + "/note";
+  const [visible, setVisible] = useState(false);
   const [notes, setNotes] = useState<Note[]>([]);
 
   useEffect(() => {
@@ -22,17 +30,21 @@ const NoteClient = () => {
   });
 
   return (
-    <>
-      <UrlBtn onClick={() => {}}>Server:</UrlBtn>
-      <Url>{url}</Url>
-      <ul>
-        {notes.map((note) => (
-          <li>
-            <label key={note.id}>{note.content}</label>
-          </li>
-        ))}
-      </ul>
-    </>
+    <Page>
+      <Url>
+        <Show
+          onClick={() => {
+            setVisible(visible ? false : true);
+          }}
+        >
+          Server:
+        </Show>
+        {visible && url}
+      </Url>
+      {notes.map((note) => (
+        <label key={note.id}>{note.content}</label>
+      ))}
+    </Page>
   );
 };
 

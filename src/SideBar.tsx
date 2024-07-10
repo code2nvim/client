@@ -1,21 +1,17 @@
 import styled from "styled-components";
 import { Client } from "./client/client";
 
-const Toggle = styled.button`
-  font-size: 1.2rem;
-  top: 1rem;
-  left: 1rem;
-  position: absolute;
-`;
-
-const Menu = styled.aside`
+const Opts = styled.aside`
   display: grid;
   grid-row: 3;
+  top: 3rem;
   position: absolute;
 `;
 
-const ClientOpt = styled.button`
+const Opt = styled.button`
   font-size: 1.2rem;
+  border-radius: 0.5rem;
+  margin: 0.5rem;
 `;
 
 interface SideBarProps {
@@ -25,12 +21,11 @@ interface SideBarProps {
 export const SideBar = ({ select }: SideBarProps) => {
   return (
     <>
-      <Toggle>MENU</Toggle>
-      <Menu>
-        <ClientOpt onClick={() => select("Chat")}>Chat</ClientOpt>
-        <ClientOpt onClick={() => select("Notes")}>Notes</ClientOpt>
-        <ClientOpt onClick={() => select("Links")}>Links</ClientOpt>
-      </Menu>
+      <Opts>
+        <Opt onClick={() => select("Chat")}>Chat</Opt>
+        <Opt onClick={() => select("Notes")}>Notes</Opt>
+        <Opt onClick={() => select("Files")}>Files</Opt>
+      </Opts>
     </>
   );
 };

@@ -1,1 +1,1 @@
-export type Client = "Chat" | "Notes" | "Links";
+export type Client = "Chat" | "Notes" | "Files";
