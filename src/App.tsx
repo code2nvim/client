@@ -6,17 +6,23 @@ import NoteClient from "./NoteClient/NoteClient";
 
 const Top = styled.header`
   background: black;
+  position: relative;
   width: 100%;
-  position: static;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
 `;
 
 const Title = styled.h1`
   color: white;
   font-size: 2rem;
-  margin: 0;
+  margin: auto;
+`;
+
+const Menu = styled.button`
+  left: 0;
+  height: 100%;
+  border-radius: 10%;
+  position: absolute;
 `;
 
 export const App = () => {
@@ -30,9 +36,8 @@ export const App = () => {
   return (
     <>
       <Top>
-        <button onClick={() => setVisible(visible ? false : true)}>MENU</button>
+        <Menu onClick={() => setVisible(visible ? false : true)}>MENU</Menu>
         <Title>{client}</Title>
-        <div />
       </Top>
       <>
         {client == "Chat" && "Chat"}
