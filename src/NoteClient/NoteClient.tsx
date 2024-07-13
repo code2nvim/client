@@ -3,18 +3,26 @@ import styled from "styled-components";
 import { Note } from "./note/note";
 
 const Page = styled.main`
-  background: #333;
+  background: #555;
+  margin-inline: auto;
+  border-radius: 1rem;
+  width: 80%;
 `;
 
 const Url = styled.p`
   color: white;
-  margin: 0;
   display: flex;
   justify-content: center;
 `;
 
-const Show = styled.button`
-  color: black;
+const Notes = styled.section`
+  color: white;
+  text-align: center;
+`;
+
+const Part = styled.p`
+  height: 1rem;
+  padding: 0.5rem;
 `;
 
 const NoteClient = () => {
@@ -32,18 +40,20 @@ const NoteClient = () => {
   return (
     <Page>
       <Url>
-        <Show
+        <button
           onClick={() => {
             setVisible(visible ? false : true);
           }}
         >
           Server:
-        </Show>
+        </button>
         {visible && url}
       </Url>
-      {notes.map((note) => (
-        <label key={note.id}>{note.content}</label>
-      ))}
+      <Notes>
+        {notes.map((note) => (
+          <Part key={note.id}>{note.content}</Part>
+        ))}
+      </Notes>
     </Page>
   );
 };

@@ -2,23 +2,28 @@ import styled from "styled-components";
 import { Client } from "./client/client";
 
 const Opts = styled.aside`
-  display: grid;
-  grid-row: 3;
-  top: 3rem;
+  display: flex;
+  flex-direction: column;
+  top: 4rem;
+  left: 1%;
   position: absolute;
 `;
 
 const Opt = styled.button`
+  background: black;
+  color: white;
   font-size: 1.2rem;
+  font-weight: bold;
   border-radius: 0.5rem;
-  margin: 0.5rem;
+  margin-block: 0.5rem;
+  padding-inline: 0.5rem;
 `;
 
 interface SideBarProps {
-  select: (client: Client) => void;
+  selClient: (client: Client) => void;
 }
 
-export const SideBar = ({ select }: SideBarProps) => {
+export const SideBar = ({ selClient: select }: SideBarProps) => {
   return (
     <>
       <Opts>

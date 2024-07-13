@@ -10,26 +10,30 @@ const Top = styled.header`
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
 
 const Title = styled.h1`
   color: white;
-  font-size: 2rem;
-  margin: auto;
+  font-size: 1.5rem;
+  padding: 0.5rem;
 `;
 
 const Menu = styled.button`
-  left: 0;
-  height: 100%;
-  border-radius: 10%;
+  color: white;
+  aspect-ratio: 1.5 / 1;
   position: absolute;
+  left: 0.2rem;
+  background: black;
+  font-weight: bold;
+  border-radius: 0.5rem;
 `;
 
 export const App = () => {
   const [client, setClient] = useState<Client>("Chat");
   const [visible, setVisible] = useState(false);
 
-  const select = (client: Client) => {
+  const selClient = (client: Client) => {
     setClient(client);
   };
 
@@ -40,11 +44,11 @@ export const App = () => {
         <Title>{client}</Title>
       </Top>
       <>
-        {client == "Chat" && "Chat"}
-        {client == "Notes" && <NoteClient />}
-        {client == "Files" && "Files"}
+        {client === "Chat" && "Chat"}
+        {client === "Notes" && <NoteClient />}
+        {client === "Files" && "Files"}
       </>
-      {visible && <SideBar select={select} />}
+      {visible && <SideBar selClient={selClient} />}
     </>
   );
 };
