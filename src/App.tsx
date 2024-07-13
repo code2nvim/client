@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { Client } from "./client/client";
-import SideBar from "./SideBar";
+import MenuBar from "./MenuBar";
 import NoteClient from "./NoteClient/NoteClient";
 
 const Top = styled.header`
@@ -23,10 +23,18 @@ const Menu = styled.button`
   color: white;
   aspect-ratio: 1.5 / 1;
   position: absolute;
-  left: 0.2rem;
+  left: 0.3rem;
   background: black;
   font-weight: bold;
   border-radius: 0.5rem;
+`;
+
+const NonMenu = styled.div<{ $visible: boolean }>`
+  position: absolute;
+  display: ${(props) => (props.$visible ? "black" : "none")};
+  top: 0;
+  height: 100%;
+  width: 100%;
 `;
 
 export const App = () => {
@@ -48,7 +56,8 @@ export const App = () => {
         {client === "Notes" && <NoteClient />}
         {client === "Files" && "Files"}
       </>
-      {visible && <SideBar selClient={selClient} />}
+      <NonMenu $visible={visible} onClick={() => setVisible(false)} />
+      {visible && <MenuBar selClient={selClient} />}
     </>
   );
 };

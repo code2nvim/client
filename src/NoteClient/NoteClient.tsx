@@ -1,32 +1,41 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Note } from "./note/note";
+import NoteElem from "./NoteElem";
 
 const Page = styled.main`
   background: #555;
   margin-inline: auto;
-  border-radius: 1rem;
   width: 80%;
 `;
 
 const Url = styled.p`
   color: white;
   display: flex;
+  padding: 0.5rem;
   justify-content: center;
+`;
+
+const UrlBtn = styled.button`
+  background: black;
+  color: white;
+  border-radius: 0.3rem;
+`;
+
+const UrlAnchor = styled.a`
+  color: white;
+  padding: 0.2rem;
 `;
 
 const Notes = styled.section`
   color: white;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
 `;
 
-const Part = styled.p`
-  height: 1rem;
-  padding: 0.5rem;
-`;
-
-const NoteClient = () => {
+export const NoteClient = () => {
   const url = import.meta.env.VITE_API_URL + "/note";
+
   const [visible, setVisible] = useState(false);
   const [notes, setNotes] = useState<Note[]>([]);
 
@@ -40,18 +49,20 @@ const NoteClient = () => {
   return (
     <Page>
       <Url>
-        <button
+        <UrlBtn
           onClick={() => {
             setVisible(visible ? false : true);
           }}
         >
           Server:
-        </button>
-        {visible && url}
+        </UrlBtn>
+        <UrlAnchor href={url} target="_blank">
+          {visible && url}
+        </UrlAnchor>
       </Url>
       <Notes>
         {notes.map((note) => (
-          <Part key={note.id}>{note.content}</Part>
+          <NoteElem key={note.id} note={note} />
         ))}
       </Notes>
     </Page>

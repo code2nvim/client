@@ -4,7 +4,7 @@ import { Client } from "./client/client";
 const Opts = styled.aside`
   display: flex;
   flex-direction: column;
-  top: 4rem;
+  top: 3.5rem;
   left: 1%;
   position: absolute;
 `;
@@ -12,11 +12,10 @@ const Opts = styled.aside`
 const Opt = styled.button`
   background: black;
   color: white;
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-size: 1.1rem;
   border-radius: 0.5rem;
-  margin-block: 0.5rem;
-  padding-inline: 0.5rem;
+  margin-block: 0.3rem;
+  padding-inline: 0.8rem;
 `;
 
 interface SideBarProps {
