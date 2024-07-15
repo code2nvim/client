@@ -19,27 +19,8 @@ const Title = styled.h1`
   padding: 0.5rem;
 `;
 
-const Menu = styled.button`
-  color: white;
-  aspect-ratio: 1.5 / 1;
-  position: absolute;
-  left: 0.3rem;
-  background: black;
-  font-weight: bold;
-  border-radius: 0.5rem;
-`;
-
-const NonMenu = styled.div<{ $visible: boolean }>`
-  position: absolute;
-  display: ${(props) => (props.$visible ? "black" : "none")};
-  top: 0;
-  height: 100%;
-  width: 100%;
-`;
-
 export const App = () => {
-  const [client, setClient] = useState<Client>("Chat");
-  const [visible, setVisible] = useState(false);
+  const [client, setClient] = useState<Client>("Notes");
 
   const selClient = (client: Client) => {
     setClient(client);
@@ -48,16 +29,14 @@ export const App = () => {
   return (
     <>
       <Top>
-        <Menu onClick={() => setVisible(visible ? false : true)}>MENU</Menu>
         <Title>{client}</Title>
       </Top>
       <>
-        {client === "Chat" && "Chat"}
         {client === "Notes" && <NoteClient />}
+        {client === "Links" && "Links"}
         {client === "Files" && "Files"}
       </>
-      <NonMenu $visible={visible} onClick={() => setVisible(false)} />
-      {visible && <MenuBar selClient={selClient} />}
+      <MenuBar selClient={selClient} />
     </>
   );
 };
