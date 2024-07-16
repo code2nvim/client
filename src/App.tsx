@@ -1,23 +1,7 @@
 import { useState } from "react";
-import styled from "styled-components";
 import { Client } from "./client/client";
-import MenuBar from "./MenuBar";
 import NoteClient from "./NoteClient/NoteClient";
-
-const Top = styled.header`
-  background: black;
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Title = styled.h1`
-  color: white;
-  font-size: 1.5rem;
-  padding: 0.5rem;
-`;
+import ClientBars from "./ClientBars/ClientBars";
 
 export const App = () => {
   const [client, setClient] = useState<Client>("Notes");
@@ -28,15 +12,12 @@ export const App = () => {
 
   return (
     <>
-      <Top>
-        <Title>{client}</Title>
-      </Top>
+      <ClientBars client={client} selClient={selClient} />
       <>
         {client === "Notes" && <NoteClient />}
         {client === "Links" && "Links"}
         {client === "Files" && "Files"}
       </>
-      <MenuBar selClient={selClient} />
     </>
   );
 };
