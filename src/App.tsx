@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Client } from "./client/client";
+import { Client } from "./client";
 import NoteClient from "./NoteClient/NoteClient";
 import ClientBars from "./ClientBars/ClientBars";
 

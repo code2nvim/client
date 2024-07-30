@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Client } from "../client/client";
+import { Client } from "../client";
 import SideBar from "./SideBar";
 
 const Top = styled.header`

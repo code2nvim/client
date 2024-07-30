@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Client } from "../client/client";
+import { Client } from "../client";
 import { useState } from "react";
 
 const Opts = styled.aside`
